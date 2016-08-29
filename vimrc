@@ -8,6 +8,8 @@ Plug 'zchee/deoplete-go'
 Plug 'Shougo/deoplete.nvim'
 Plug 'godlygeek/tabular'
 Plug 'elzr/vim-json'
+Plug 'mhinz/vim-sayonara'
+Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()
 
 filetype off                  " required
