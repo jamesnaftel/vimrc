@@ -8,6 +8,7 @@ Plug 'zchee/deoplete-go'
 Plug 'Shougo/deoplete.nvim'
 Plug 'godlygeek/tabular'
 Plug 'elzr/vim-json'
+Plug 'ntpeters/vim-better-whitespace'
 call plug#end()
 
 filetype off                  " required
@@ -445,6 +446,7 @@ let g:go_highlight_trailing_whitespace_error = 0
 let g:go_highlight_extra_types = 0
 let g:go_highlight_operators = 0
 let g:go_highlight_build_constraints = 1
+let g:go_highlight_types = 1
 
 
 au FileType go nmap <Leader>s <Plug>(go-def-split)
@@ -655,3 +657,28 @@ imap <C-K> <c-o>:pyf /usr/share/vim/addons/syntax/clang-format-3.8.py<cr>
 autocmd BufWritePre *.cpp,*.hpp pyf /usr/share/vim/addons/syntax/clang-format-3.8.py
 
 " vim:ts=2:sw=2:et
+"
+"------------------------------------------------------------------------------
+" NERDTree
+"------------------------------------------------------------------------------
+
+" General properties
+let NERDTreeDirArrows=1
+let NERDTreeMinimalUI=1
+let NERDTreeIgnore=['\.o$', '\.pyc$', '\.php\~$']
+let NERDTreeWinSize = 35
+
+" Make sure that when NT root is changed, Vim's pwd is also updated
+let NERDTreeChDirMode = 2
+let NERDTreeShowLineNumbers = 1
+let NERDTreeAutoCenter = 1
+
+" Open NERDTree on startup, when no file has been specified
+autocmd VimEnter * if !argc() | NERDTree | endif
+
+" Locate file in hierarchy quickly
+map <leader>T :NERDTreeFind<cr>
+
+" Toogle on/off
+nmap <leader>o :NERDTreeToggle<cr>
+
