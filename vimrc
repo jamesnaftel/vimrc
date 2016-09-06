@@ -8,6 +8,11 @@ Plug 'zchee/deoplete-go'
 Plug 'Shougo/deoplete.nvim'
 Plug 'godlygeek/tabular'
 Plug 'elzr/vim-json'
+<<<<<<< HEAD
+=======
+Plug 'mhinz/vim-sayonara'
+Plug 'ctrlpvim/ctrlp.vim'
+>>>>>>> cbec4d85673a1c2d8b7ea4e28bfb7912c0268c05
 Plug 'ntpeters/vim-better-whitespace'
 call plug#end()
 
@@ -170,7 +175,6 @@ if has("autocmd")
 else
 endif " has("autocmd")
 
-
 syntax enable
 if has('gui_running')
   set transparency=3
@@ -178,14 +182,10 @@ if has('gui_running')
   set regexpengine=1
   syntax enable
 endif
-set background=dark
-let g:solarized_termcolors=256
-let g:solarized_termtrans=1
-" let g:hybrid_use_Xresources = 1
-" let g:rehash256 = 1
-" colorscheme solarized
+colorscheme koehler
 set guifont=Inconsolata:h15
 set guioptions-=L
+set background=dark
 
 " This comes first, because we have mappings that depend on leader
 " With a map leader it's possible to do extra key combinations
@@ -447,7 +447,12 @@ let g:go_highlight_extra_types = 0
 let g:go_highlight_operators = 0
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_types = 1
+<<<<<<< HEAD
 
+=======
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+>>>>>>> cbec4d85673a1c2d8b7ea4e28bfb7912c0268c05
 
 au FileType go nmap <Leader>s <Plug>(go-def-split)
 au FileType go nmap <Leader>v <Plug>(go-def-vertical)
