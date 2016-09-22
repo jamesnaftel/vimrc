@@ -8,12 +8,10 @@ Plug 'zchee/deoplete-go'
 Plug 'Shougo/deoplete.nvim'
 Plug 'godlygeek/tabular'
 Plug 'elzr/vim-json'
-<<<<<<< HEAD
-=======
 Plug 'mhinz/vim-sayonara'
 Plug 'ctrlpvim/ctrlp.vim'
->>>>>>> cbec4d85673a1c2d8b7ea4e28bfb7912c0268c05
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'tpope/vim-endwise'
 call plug#end()
 
 filetype off                  " required
@@ -182,7 +180,7 @@ if has('gui_running')
   set regexpengine=1
   syntax enable
 endif
-colorscheme koehler
+colorscheme molokai
 set guifont=Inconsolata:h15
 set guioptions-=L
 set background=dark
@@ -387,8 +385,10 @@ set wildignore+=*.orig                           " Merge resolution files
 " ----------------------------------------- "
 
 " ==================== CtrlP ====================
+let g:ctrlp_map = '<C-p>'
 let g:ctrlp_cmd = 'CtrlPMRU'
-let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_by_filename = 0
+let g:ctrlp_working_path_mode = 'ar'
 let g:ctrlp_max_height = 10		" maxiumum height of match window
 let g:ctrlp_switch_buffer = 'et'	" jump to a file if it's open already
 let g:ctrlp_mruf_max=450 		" number of recently opened files
@@ -447,12 +447,8 @@ let g:go_highlight_extra_types = 0
 let g:go_highlight_operators = 0
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_types = 1
-<<<<<<< HEAD
-
-=======
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
->>>>>>> cbec4d85673a1c2d8b7ea4e28bfb7912c0268c05
 
 au FileType go nmap <Leader>s <Plug>(go-def-split)
 au FileType go nmap <Leader>v <Plug>(go-def-vertical)
@@ -687,3 +683,13 @@ map <leader>T :NERDTreeFind<cr>
 " Toogle on/off
 nmap <leader>o :NERDTreeToggle<cr>
 
+" Simple re-format for minified Javascript
+command! UnMinify call UnMinify()
+function! UnMinify()
+    %s/{\ze[^\r\n]/{\r/g
+    %s/){/) {/g
+    %s/};\?\ze[^\r\n]/\0\r/g
+    %s/;\ze[^\r\n]/;\r/g
+    %s/[^\s]\zs[=&|]\+\ze[^\s]/ \0 /g
+    normal ggVG=
+endfunction
