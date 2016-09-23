@@ -12,6 +12,14 @@ Plug 'mhinz/vim-sayonara'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-fugitive'
+Plug 'Yggdroot/indentLine'
+Plug 'itchyny/lightline.vim'
+Plug 'raimondi/delimitMate'
+Plug 'moll/vim-bbye'
+Plug 'airblade/vim-gitgutter'
+Plug 'moorereason/vim-markdownfmt'
+Plug 'ap/vim-buftabline'
 call plug#end()
 
 filetype off                  " required
@@ -191,6 +199,8 @@ set background=dark
 let mapleader = ","
 let g:mapleader = ","
 
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
 " This trigger takes advantage of the fact that the quickfix window can be
 " easily distinguished by its file-type, qf. The wincmd J command is
 " equivalent to the Ctrl+W, Shift+J shortcut telling Vim to move a window to
@@ -242,6 +252,10 @@ nnoremap <leader>a :cclose<CR>
 
 " Remove search highlight
 nnoremap <leader><space> :nohlsearch<CR>
+
+" Buffer prev/next
+nnoremap <C-x> :bnext<CR>
+nnoremap <C-z> :bprev<CR>
 
 " Better split switching
 map <C-j> <C-W>j
@@ -693,3 +707,8 @@ function! UnMinify()
     %s/[^\s]\zs[=&|]\+\ze[^\s]/ \0 /g
     normal ggVG=
 endfunction
+
+"----------------------------------------------------------------
+" indentLine
+"----------------------------------------------------------------
+let g:indentLine_enabled = 0
