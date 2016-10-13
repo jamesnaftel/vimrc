@@ -20,6 +20,7 @@ Plug 'moll/vim-bbye'
 Plug 'airblade/vim-gitgutter'
 Plug 'moorereason/vim-markdownfmt'
 Plug 'ap/vim-buftabline'
+Plug 'SirVer/ultisnips'
 call plug#end()
 
 filetype off                  " required
@@ -41,7 +42,10 @@ set nobackup					          " Don't create annoying backup files
 set nowritebackup
 set splitright                  " Split vertical windows right to the current windows
 set splitbelow                  " Split horizontal windows below to the current windows
-set encoding=utf-8              " Set default encoding to UTF-8
+if !exists('g:encoding_set') || !has('nvim')
+    set encoding=utf-8              " Set default encoding to UTF-8
+    let g:encoding_set = 1
+endif
 set autowrite                   " Automatically save before :next, :make etc.
 set autoread                    " Automatically reread changed files without asking me anything
 set laststatus=2
@@ -216,8 +220,8 @@ autocmd FileType qf wincmd J
 ":cn      next error
 ":cp      previous error
 ":clist   list all errors
-map <C-n> :cn<CR>
-map <C-m> :cp<CR>
+map <C-n> :cnext<CR>
+map <C-m> :cprevious<CR>
 
 nnoremap <silent> <leader>q :Sayonara<CR>
 
@@ -453,7 +457,6 @@ let g:go_fmt_fail_silently = 0
 let g:go_fmt_command = "goimports"
 let g:go_autodetect_gopath = 1
 let g:go_term_enabled = 1
-let g:go_snippet_engine = "neosnippet"
 let g:go_highlight_space_tab_error = 0
 let g:go_highlight_array_whitespace_error = 0
 let g:go_highlight_trailing_whitespace_error = 0
@@ -626,7 +629,6 @@ let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
 " ==================== NerdTree ====================
 " For toggling
-nmap <C-n> :NERDTreeToggle<CR>
 noremap <Leader>n :NERDTreeToggle<cr>
 noremap <Leader>f :NERDTreeFind<cr>
 
