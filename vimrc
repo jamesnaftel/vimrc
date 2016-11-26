@@ -26,6 +26,7 @@ Plug 'moorereason/vim-markdownfmt'
 Plug 'ap/vim-buftabline'
 Plug 'SirVer/ultisnips'
 Plug 'garyburd/go-explorer'
+Plug 'benmills/vimux'
 call plug#end()
 
 filetype off                  " required
