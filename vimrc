@@ -771,3 +771,4 @@ endfunction
 let g:indentLine_enabled = 0
 
 map <Leader>rs :call VimuxRunCommand("clear; " . fnamemodify(bufname(1), ':p'))<CR>
+map <Leader>vmd :call VimuxRunCommand("clear; asciidoctor " . expand("%:p") . "; open " . expand("%:p:r") . ".html")<CR>
