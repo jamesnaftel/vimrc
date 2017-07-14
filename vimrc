@@ -27,6 +27,9 @@ Plug 'ap/vim-buftabline'
 Plug 'SirVer/ultisnips'
 Plug 'garyburd/go-explorer'
 Plug 'benmills/vimux'
+Plug 'w0rp/ale'
+Plug 'pangloss/vim-javascript'
+" vim-jsx for react
 call plug#end()
 
 filetype off                  " required
@@ -793,3 +796,16 @@ map <Leader>vp :VimuxPromptCommand<CR>
 map <Leader>vl :VimuxRunLastCommand<CR>
 map <Leader>vi :VimuxInspectRunner<CR>
 map <Leader>vz :VimuxZoomRunner<CR>
+
+"----------------------------------------------------------------
+" Ale
+"----------------------------------------------------------------
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 0
+
+
+"----------------------------------------------------------------
+" vim-javascript
+"----------------------------------------------------------------
+let g:javascript_plugin_jsdoc = 1
+
