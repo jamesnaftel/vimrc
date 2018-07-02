@@ -22,6 +22,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'raimondi/delimitMate'
 Plug 'moll/vim-bbye'
 Plug 'airblade/vim-gitgutter'
+Plug 'plasticboy/vim-markdown'
 Plug 'moorereason/vim-markdownfmt'
 Plug 'ap/vim-buftabline'
 Plug 'SirVer/ultisnips'
@@ -29,6 +30,8 @@ Plug 'garyburd/go-explorer'
 Plug 'benmills/vimux'
 Plug 'w0rp/ale'
 Plug 'pangloss/vim-javascript'
+Plug 'keith/swift.vim'
+Plug 'kien/rainbow_parentheses.vim'
 " vim-jsx for react
 call plug#end()
 
@@ -381,6 +384,16 @@ autocmd BufNewFile,BufRead *.lua setlocal noet ts=4 sw=4 sts=4
 " Dockerfile settings
 autocmd FileType dockerfile set noexpandtab
 
+" java settings
+"autocmd FileType java set noexpandtab
+"au BufNewFile,BufRead *.java setlocal noexpandtab tabstop=4 shiftwidth=4
+au BufNewFile,BufRead *.java setlocal noet ts=4 sw=4 sts=4
+
+" js settings TODO: fix
+au BufNewFile,BufRead *.js setlocal tabstop=4 softtabstop=8
+au BufNewFile,BufRead *.js setlocal expandtab ts=2 sw=2
+autocmd FileType javascript syntax clear jsFuncBlock jsFuncArgs
+
 " shell/config/systemd settings
 autocmd FileType fstab,systemd set noexpandtab
 autocmd FileType gitconfig,sh,toml set noexpandtab
@@ -463,8 +476,8 @@ vnoremap <leader>gb :Gblame<CR>
 nmap <C-t> :bn<CR>
 
 " =================== Vim-cfmt ===================
-let g:cfmt_style = '-linux'
-autocmd BufWritePre *.c,*.h Cfmt
+"let g:cfmt_style = '-linux'
+"autocmd BufWritePre *.c,*.h Cfmt
 
 " ==================== Vim-go ====================
 let g:go_fmt_fail_silently = 0
@@ -809,3 +822,32 @@ let g:ale_lint_on_text_changed = 0
 "----------------------------------------------------------------
 let g:javascript_plugin_jsdoc = 1
 
+
+"----------------------------------------------------------------
+" rainbow_parentheses
+"----------------------------------------------------------------
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['black',       'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['red',         'firebrick3'],
+    \ ]
+let g:rbpt_max = 16
+let g:rbpt_loadcmd_toggle = 0
+
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
